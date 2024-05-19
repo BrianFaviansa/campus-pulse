@@ -15,19 +15,19 @@ class CategorySeeder extends Seeder
     {
         $kategoris = [
             [
-                'nama'=>'Teknologi',
+                'nama'=>'Technology',
             ],
             [
-                'nama'=>'Akademik',
+                'nama'=>'Academic',
             ],
             [
-                'nama'=>'Budaya',
+                'nama'=>'Culture',
             ],
             [
-                'nama'=>'Kesehatan'
+                'nama'=>'Health'
             ],
             [
-                'nama'=>'Sosial',
+                'nama'=>'Social',
             ],
 
         ];

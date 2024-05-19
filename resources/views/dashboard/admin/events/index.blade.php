@@ -1,8 +1,8 @@
 @extends('dashboard.admin.layouts.layout')
 
 @section('content')
-    <h1 class="">Categories</h1>
-    @include('dashboard.admin.categories.modal-create')
+    <h1 class="">Events</h1>
+    @include('dashboard.admin.events.modal-create')
 
     @if (session('success'))
         @include('dashboard.admin.layouts.success-alert')
@@ -13,26 +13,33 @@
             <thead>
                 <tr>
                     <th>Number</th>
-                    <th>Category</th>
-                    <th>Created At</th>
+                    <th>Name</th>
+                    <th>Organizer</th>
+                    <th>Benefit</th>
+                    <th>Description</th>
+                    <th>Status</th>
                     <th>Action</th>
 
                 </tr>
             </thead>
             <tbody>
-                @forelse ($categories as $category)
+                @forelse ($events as $event)
                     <tr>
                         <td>{{ $loop->iteration }}</td>
-                        <td>{{ $category->nama }}</td>
-                        <td>{{ $category->created_at->format('d F Y') }}</td>
+                        <td>{{ $event->nama }}</td>
+                        <td>{{ $event->user->nama }}</td>
+                        <td>{{ $event->benefit }}</td>
+                        <td>{{ $event->nama }}</td>
+                        <td>{{ $event->nama }}</td>
+                        <td>{{ $event->created_at->format('d F Y') }}</td>
                         <td>
-                            @include('dashboard.admin.categories.modal-edit')
-                            @include('dashboard.admin.categories.modal-delete')
+                            @include('dashboard.admin.events.modal-edit')
+                            @include('dashboard.admin.events.modal-delete')
                         </td>
                     </tr>
                 @empty
                     <tr>
-                        <td colspan="4">There is no category</td>
+                        <td colspan="7">There is no event</td>
                     </tr>
                 @endforelse
             </tbody>

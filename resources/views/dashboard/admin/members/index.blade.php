@@ -16,7 +16,7 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
+            @forelse ($users as $user)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>{{ $user->nama }}</td>
@@ -26,7 +26,10 @@
                 <td>{{ $user->jurusan }}</td>
                 <td>{{ $user->created_at->format('d F Y') }}</td>
             </tr>
-            @endforeach
+            @empty
+            <tr>
+                <td colspan="7">There is no member</td>
+            @endforelse
         </tbody>
     </table>
 </div>

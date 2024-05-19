@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\EventController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardUserController;
@@ -47,6 +48,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/categories/store', [CategoryController::class, 'store'])->name('admin.categories.store');
             Route::put('/categories/update/{category}', [CategoryController::class, 'update'])->name('admin.categories.update');
             Route::delete('/categories/delete/{category}', [CategoryController::class, 'destroy'])->name('admin.categories.delete');
+
+            Route::get('/events', [DashboardAdminController::class, 'events'])->name('dashboard.admin.events');
+            Route::post('/events/store', [EventController::class, 'store'])->name('admin.events.store');
         });
     });
 

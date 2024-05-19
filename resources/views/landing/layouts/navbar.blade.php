@@ -35,9 +35,6 @@
                         <div class="fas fa-user" id="login-btn"></div>
                     </a>
                 @endif
-                <a href="{{ route('logout') }}">
-                    <div class="fas fa-logout" id="login-btn"></div>
-                </a>
             @endauth
 
             <a href="">

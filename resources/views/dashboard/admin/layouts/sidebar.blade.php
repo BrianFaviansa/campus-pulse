@@ -39,7 +39,7 @@
             </li>
 
             <li>
-                <a href="">
+                <a href="{{ route('dashboard.admin.events') }}">
                     <span class="icon">
                         <ion-icon name="calendar-sharp"></ion-icon>
                     </span>

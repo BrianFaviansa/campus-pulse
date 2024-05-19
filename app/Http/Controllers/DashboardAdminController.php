@@ -39,4 +39,14 @@ class DashboardAdminController extends Controller
 
         return view('dashboard.admin.categories.index', compact('title', 'user', 'categories'));
     }
+
+    public function events()
+    {
+        $title = "Events";
+        $user = auth()->user();
+        $events = Event::orderBy('created_at', 'desc')->get();
+        $categories = Category::orderBy('nama', 'asc')->get();
+
+        return view('dashboard.admin.events.index', compact('title', 'user', 'events', 'categories'));
+    }
 }
