@@ -4,31 +4,31 @@ namespace App\Http\Controllers;
 
 use App\Models\Event;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'category_id' => 'required',
+            'user_id' => 'required',
+            'poster' => 'required|image|mimes:jpeg,png,jpg,gif,svg',
+            'tanggal' => 'required',
+            'benefit' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        $image = $request->file('poster');
+        $imageName = $request->input('poster') . '_' . time() . '.' . $image->getClientOriginalExtension();
+        $image->storeAs('event_posters', $imageName, 'public');
+        $validatedData['poster'] = $imageName;
+
+        Event::create($validatedData);
+
+        return redirect()->route('dashboard.admin.events')->with('success', 'Event created successfully!');
     }
 
     /**
@@ -40,19 +40,34 @@ class EventController extends Controller
     }
 
     /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Event $event)
-    {
-        //
-    }
-
-    /**
      * Update the specified resource in storage.
      */
     public function update(Request $request, Event $event)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+            'category_id' => 'required',
+            'user_id' => 'required',
+            'poster' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg',
+            'tanggal' => 'required',
+            'benefit' => 'required',
+            'status' => 'required',
+            'deskripsi' => 'required',
+        ]);
+
+        if ($request->hasFile('poster')) {
+            $image = $request->file('poster');
+            $imageName = $request->input('poster') . '_' . time() . '.' . $image->getClientOriginalExtension();
+            $image->storeAs('event_posters', $imageName, 'public');
+            Storage::disk('public')->delete('event_posters/' . $event->poster);
+            $validatedData['poster'] = $imageName;
+        } else {
+            $validatedData['poster'] = $event->poster;
+        }
+
+        $event->update($validatedData);
+
+        return redirect()->route('dashboard.admin.events')->with('success', 'Event updated successfully!');
     }
 
     /**
@@ -60,6 +75,9 @@ class EventController extends Controller
      */
     public function destroy(Event $event)
     {
-        //
+        Storage::disk('public')->delete('event_posters/' . $event->poster);
+        $event->delete();
+
+        return redirect()->route('dashboard.admin.events')->with('success', 'Event deleted successfully!');
     }
 }

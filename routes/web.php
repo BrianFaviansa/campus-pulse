@@ -51,6 +51,8 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('/events', [DashboardAdminController::class, 'events'])->name('dashboard.admin.events');
             Route::post('/events/store', [EventController::class, 'store'])->name('admin.events.store');
+            Route::put('/events/update/{event}', [EventController::class, 'update'])->name('admin.events.update');
+            Route::delete('/events/delete/{event}', [EventController::class, 'destroy'])->name('admin.events.delete');
         });
     });
 

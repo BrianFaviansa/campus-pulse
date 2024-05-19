@@ -19,7 +19,7 @@ class CategoryController extends Controller
 
         Category::create($validatedData);
 
-        return redirect()->route('dashboard.admin.categories')->with('success', 'Category created successfully');
+        return redirect()->route('dashboard.admin.categories')->with('success', 'Category created successfully!');
     }
 
     /**
@@ -33,7 +33,7 @@ class CategoryController extends Controller
 
         $category->update($validatedData);
 
-        return redirect()->route('dashboard.admin.categories')->with('success', 'Category updated successfully');
+        return redirect()->route('dashboard.admin.categories')->with('success', 'Category updated successfully!');
     }
 
     /**
@@ -43,6 +43,6 @@ class CategoryController extends Controller
     {
         $category->delete();
 
-        return redirect()->route('dashboard.admin.categories')->with('success', 'Category deleted successfully');
+        return redirect()->route('dashboard.admin.categories')->with('success', 'Category deleted successfully!');
     }
 }

@@ -16,10 +16,11 @@ return new class extends Migration
             $table->string('nama');
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('category_id');
+            $table->string('poster');
             $table->date('tanggal');
             $table->string('benefit');
             $table->text('deskripsi');
-            $table->enum('status', ['coming soon', 'on going', 'done']);
+            $table->enum('status', ['Coming Soon', 'Ongoing', 'Done']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
