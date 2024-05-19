@@ -15,13 +15,13 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('kategori_id');
+            $table->unsignedBigInteger('category_id');
             $table->date('tanggal');
             $table->string('benefit');
             $table->text('deskripsi');
             $table->enum('status', ['coming soon', 'on going', 'done']);
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('kategori_id')->references('id')->on('kategoris')->onDelete('cascade');
+            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });
     }
