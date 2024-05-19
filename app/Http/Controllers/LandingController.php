@@ -8,31 +8,37 @@ class LandingController extends Controller
 {
     public function index()
     {
-        return view('landing.index');
+        $title = 'Home';
+        return view('landing.index', compact('title'));
     }
 
     public function about()
     {
-        return view('landing.about');
+        $title = 'About';
+        return view('landing.about', compact('title'));
     }
 
     public function community()
     {
-        return view('landing.community');
+        $title = 'Community';
+        return view('landing.community', compact('title'));
     }
 
     public function competitions()
     {
-        return view('landing.competitions');
+        $title = 'Competitions';
+        return view('landing.competitions', compact('title'));
     }
 
     public function scholarships()
     {
-        return view('landing.scholarships');
+        $title = 'Scholarships';
+        return view('landing.scholarships', compact('title'));
     }
 
     public function internships()
     {
-        return view('landing.internships');
+        $title = 'Internships';
+        return view('landing.internships', compact('title'));
     }
 }
