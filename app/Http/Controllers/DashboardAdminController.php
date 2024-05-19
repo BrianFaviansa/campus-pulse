@@ -66,4 +66,12 @@ class DashboardAdminController extends Controller
 
         return view('dashboard.admin.profile.index', compact('title', 'user'));
     }
+
+    public function forums()
+    {
+        $title = "Forums";
+        $user = auth()->user();
+
+        return view('dashboard.admin.forums.index', compact('title', 'user'));
+    }
 }

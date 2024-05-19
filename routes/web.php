@@ -3,12 +3,13 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
+use App\Http\Controllers\ForumController;
 use App\Http\Controllers\LandingController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
-use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,10 +28,6 @@ Route::get('/community', [LandingController::class, 'community']);
 Route::get('/competitions', [LandingController::class, 'competitions']);
 Route::get('/scholarships', [LandingController::class, 'scholarships']);
 Route::get('/internships', [LandingController::class, 'internships']);
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
 
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -63,6 +60,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
             Route::get('/forums', [DashboardAdminController::class, 'forums'])->name('dashboard.admin.forums');
+            Route::post('/forums/store', [ForumController::class, 'store'])->name('admin.forums.store');
 
             Route::get('/profile/{user:nama}', [DashboardAdminController::class, 'profile'])->name('dashboard.admin.profile');
             Route::put('/profile/{user:nama}/update', [ProfileController::class, 'update'])->name('dashboard.admin.profile.update');
