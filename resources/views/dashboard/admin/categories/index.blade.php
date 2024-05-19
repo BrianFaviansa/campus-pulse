@@ -27,6 +27,7 @@
                         <td>{{ $category->created_at->format('d F Y') }}</td>
                         <td>
                             @include('dashboard.admin.categories.modal-edit')
+                            @include('dashboard.admin.categories.modal-delete')
                         </td>
                     </tr>
                 @endforeach
