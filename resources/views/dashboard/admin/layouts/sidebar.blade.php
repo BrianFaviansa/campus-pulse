@@ -7,7 +7,7 @@
                     <span class="icon">
                         <ion-icon name="school-sharp"></ion-icon>
                     </span>
-                    <span class="title">CampusPulse Admin</span>
+                    <span class="title">{{ $user->nama }}</span>
                 </a>
             </li>
 
@@ -48,7 +48,7 @@
             </li>
 
             <li>
-                <a href="">
+                <a href="{{ route('dashboard.admin.partnerships') }}">
                     <span class="icon">
                         <ion-icon name="diamond-outline"></ion-icon>
                     </span>
@@ -88,3 +88,4 @@
                 <img src="{{ asset('import/assets/imgs/customer01.jpg') }}" alt="">
             </div>
         </div>
+        

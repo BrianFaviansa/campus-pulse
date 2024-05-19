@@ -49,4 +49,13 @@ class DashboardAdminController extends Controller
 
         return view('dashboard.admin.events.index', compact('title', 'user', 'events', 'categories'));
     }
+
+    public function partnerships()
+    {
+        $title = "Partnerships";
+        $user = auth()->user();
+        $partnerships = Partnership::orderBy('created_at', 'desc')->get();
+
+        return view('dashboard.admin.partnerships.index', compact('title', 'user', 'partnerships'));
+    }
 }

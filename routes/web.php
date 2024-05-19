@@ -5,6 +5,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\EventController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
 
@@ -53,6 +54,12 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/events/store', [EventController::class, 'store'])->name('admin.events.store');
             Route::put('/events/update/{event}', [EventController::class, 'update'])->name('admin.events.update');
             Route::delete('/events/delete/{event}', [EventController::class, 'destroy'])->name('admin.events.delete');
+
+            Route::get('/partnerships', [DashboardAdminController::class, 'partnerships'])->name('dashboard.admin.partnerships');
+            Route::post('/partnerships/store', [PartnershipController::class, 'store'])->name('admin.partnerships.store');
+            Route::put('/partnerships/update/{partnership}', [PartnershipController::class, 'update'])->name('admin.partnerships.update');
+            Route::delete('/partnerships/delete/{partnership}', [PartnershipController::class, 'destroy'])->name('admin.partnerships.delete');
+
         });
     });
 
