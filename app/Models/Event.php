@@ -11,6 +11,10 @@ class Event extends Model
 
     protected $guarded = ['id'];
 
+    protected $casts = [
+        'tanggal' => 'datetime',
+    ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
