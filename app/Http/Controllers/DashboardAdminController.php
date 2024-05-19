@@ -2,9 +2,41 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+use App\Models\Event;
+use App\Models\Category;
+use App\Models\Partnership;
 use Illuminate\Http\Request;
 
 class DashboardAdminController extends Controller
 {
-    //
+    public function index()
+    {
+        $title = "Admin Dashboard";
+        $user = auth()->user();
+        $users = User::where('role', 'user')->count();
+        $categories = Category::count();
+        $events = Event::count();
+        $partnerships = Partnership::count();
+
+        return view('dashboard.admin.index', compact('title', 'user', 'users', 'categories', 'events', 'partnerships'));
+    }
+
+    public function members()
+    {
+        $title = "Members";
+        $user = auth()->user();
+        $users = User::where('role', 'user')->get();
+
+        return view('', compact('title', 'user', 'users'));
+    }
+
+    public function categories()
+    {
+        $title = "Categories";
+        $user = auth()->user();
+        $categories = Category::orderBy('created_at', 'desc')->get();
+
+        return view('', compact('title', 'user', 'categories'));
+    }
 }

@@ -12,7 +12,7 @@
 
 </head>
 <body>
-    @include('AdminDashboard.sidebar') <!-- Include navbar here -->
+    @include('dashboard.admin.layouts.sidebar') <!-- Include navbar here -->
 
     <div class="px-5">
         @yield('content') <!-- Place where content of each page will be inserted -->
