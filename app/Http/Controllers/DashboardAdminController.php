@@ -37,6 +37,6 @@ class DashboardAdminController extends Controller
         $user = auth()->user();
         $categories = Category::orderBy('created_at', 'desc')->get();
 
-        return view('', compact('title', 'user', 'categories'));
+        return view('dashboard.admin.categories.index', compact('title', 'user', 'categories'));
     }
 }

@@ -28,7 +28,13 @@ class CategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'nama' => 'required',
+        ]);
+
+        Category::create($validatedData);
+
+        return redirect()->route('dashboard.admin.categories')->with('success', 'Kategori berhasil ditambahkan');
     }
 
     /**
