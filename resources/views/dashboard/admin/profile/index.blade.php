@@ -6,17 +6,33 @@
     @if (session('success'))
         @include('dashboard.admin.layouts.success-alert')
     @endif
-    
+
+    @if (session('error'))
+        @include('dashboard.admin.layouts.error-alert')
+    @endif
+
     <form action="{{ route('dashboard.admin.profile.update', $user) }}" method="POST">
         @csrf
         @method('PUT')
         <div class="form-group">
             <label for="nama">Name</label>
-            <input type="text" name="nama" value="{{ $user->nama }}" class="form-control" id="nama" required>
+            <input type="text" name="nama" value="{{ $user->nama }}"
+                class="form-control @error('nama') is-invalid @enderror" id="nama" required>
+            @error('nama')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" name="email" value="{{ $user->email }}" class="form-control" id="email" required>
+            <input type="email" name="email" value="{{ $user->email }}"
+                class="form-control @error('email') is-invalid @enderror" id="email" required>
+            @error('email')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
             <label for="jenis_kelamin">Gender</label>
@@ -26,13 +42,39 @@
             </select>
         </div>
         <div class="form-group">
-            <label for="universitas">Universitas</label>
-            <input type="text" name="universitas" value="{{ $user->universitas }}" class="form-control" id="universitas"
-                required>
+            <label for="universitas">University</label>
+            <input type="text" name="universitas" value="{{ $user->universitas }}"
+                class="form-control @error('universitas') is-invalid @enderror" id="universitas" required>
+            @error('universitas')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <div class="form-group">
-            <label for="jurusan">Jurusan</label>
-            <input type="text" name="jurusan" value="{{ $user->jurusan }}" class="form-control" id="jurusan" required>
+            <label for="jurusan">Major</label>
+            <input type="text" name="jurusan" value="{{ $user->jurusan }}"
+                class="form-control @error('jurusan') is-invalid @enderror" id="jurusan" required>
+            @error('jurusan')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
+        </div>
+        <div class="form-group">
+            <label for="oldPassword">Old Password</label>
+            <input type="password" name="oldPassword" class="form-control" id="oldPassword">
+        </div>
+        <div class="form-group">
+            <label for="newPassword">New Password</label>
+            <input type="password" name="newPassword" class="form-control @error('newPassword') is-invalid @enderror"
+                id="newPassword">
+            <small>Leave it empty if you don't want to change your password</small>
+            @error('newPassword')
+                <div class="invalid-feedback">
+                    {{ $message }}
+                </div>
+            @enderror
         </div>
         <!-- Button trigger modal -->
         <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#SaveProfile">
