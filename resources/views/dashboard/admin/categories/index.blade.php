@@ -26,7 +26,7 @@
                         <td>{{ $category->nama }}</td>
                         <td>{{ $category->created_at->format('d F Y') }}</td>
                         <td>
-                            {{-- @include('AdminDashboard.category.modal-edit') --}}
+                            @include('dashboard.admin.categories.modal-edit')
                         </td>
                     </tr>
                 @endforeach
