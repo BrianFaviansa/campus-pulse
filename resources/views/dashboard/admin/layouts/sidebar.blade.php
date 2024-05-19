@@ -5,7 +5,7 @@
             <li>
                 <a href="#">
                     <span class="icon">
-                        <ion-icon name="school-sharp"></ion-icon>
+                        <ion-icon name="school-outline"></ion-icon>
                     </span>
                     <span class="title">{{ $user->nama }}</span>
                 </a>
@@ -23,7 +23,7 @@
             <li>
                 <a href="{{ route('dashboard.admin.members') }}">
                     <span class="icon">
-                        <ion-icon name="people-sharp"></ion-icon>
+                        <ion-icon name="people-outline"></ion-icon>
                     </span>
                     <span class="title">Members CampusPulse</span>
                 </a>
@@ -32,7 +32,7 @@
             <li>
                 <a href="{{ route('dashboard.admin.categories') }}">
                     <span class="icon">
-                        <ion-icon name="grid-sharp"></ion-icon>
+                        <ion-icon name="grid-outline"></ion-icon>
                     </span>
                     <span class="title">Event Categories</span>
                 </a>
@@ -41,7 +41,7 @@
             <li>
                 <a href="{{ route('dashboard.admin.events') }}">
                     <span class="icon">
-                        <ion-icon name="calendar-sharp"></ion-icon>
+                        <ion-icon name="calendar-outline"></ion-icon>
                     </span>
                     <span class="title">Registered Events</span>
                 </a>
@@ -52,16 +52,25 @@
                     <span class="icon">
                         <ion-icon name="diamond-outline"></ion-icon>
                     </span>
-                    <span class="title">Brand & Partnership</span>
+                    <span class="title">Partnerships</span>
                 </a>
             </li>
 
             <li>
-                <a href="#">
+                <a href="{{ route('dashboard.admin.forums') }}">
+                    <span class="icon">
+                        <ion-icon name="chatbox-outline"></ion-icon>
+                    </span>
+                    <span class="title">Forums</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="{{ route('dashboard.admin.profile', $user) }}">
                     <span class="icon">
                         <ion-icon name="settings-outline"></ion-icon>
                     </span>
-                    <span class="title">Settings</span>
+                    <span class="title">Profile</span>
                 </a>
             </li>
 
@@ -88,4 +97,4 @@
                 <img src="{{ asset('import/assets/imgs/customer01.jpg') }}" alt="">
             </div>
         </div>
-        
+

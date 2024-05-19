@@ -8,6 +8,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
+use App\Http\Controllers\ProfileController;
 
 /*
 |--------------------------------------------------------------------------
@@ -60,6 +61,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('/partnerships/update/{partnership}', [PartnershipController::class, 'update'])->name('admin.partnerships.update');
             Route::delete('/partnerships/delete/{partnership}', [PartnershipController::class, 'destroy'])->name('admin.partnerships.delete');
 
+
+            Route::get('/forums', [DashboardAdminController::class, 'forums'])->name('dashboard.admin.forums');
+
+            Route::get('/profile/{user:nama}', [DashboardAdminController::class, 'profile'])->name('dashboard.admin.profile');
+            Route::put('/profile/{user:nama}/update', [ProfileController::class, 'update'])->name('dashboard.admin.profile.update');
         });
     });
 

@@ -58,4 +58,12 @@ class DashboardAdminController extends Controller
 
         return view('dashboard.admin.partnerships.index', compact('title', 'user', 'partnerships'));
     }
+
+    public function profile()
+    {
+        $title = "Profile";
+        $user = auth()->user();
+
+        return view('dashboard.admin.profile.index', compact('title', 'user'));
+    }
 }
