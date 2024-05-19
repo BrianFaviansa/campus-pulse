@@ -28,7 +28,7 @@ class DashboardAdminController extends Controller
         $user = auth()->user();
         $users = User::where('role', 'user')->get();
 
-        return view('', compact('title', 'user', 'users'));
+        return view('dashboard.admin.members.index', compact('title', 'user', 'users'));
     }
 
     public function categories()
