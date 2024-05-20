@@ -37,12 +37,15 @@
                 @endif
             @endauth
 
-            <a href="">
+            <a id="btnNotif">
                 <div class="fas fa-bell"></div>
             </a>
         </div>
 
+
     </header>
+
+    
 
 
     <!-- header section ends -->
