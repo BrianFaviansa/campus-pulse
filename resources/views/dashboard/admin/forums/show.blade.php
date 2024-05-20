@@ -4,21 +4,17 @@
     <!-- ======================= Cards ================== -->
     <h1 class="">Forums</h1>
 
-    @include('dashboard.admin.forums.modal-create')
 
     <div class="px-5 mt-4">
-        @forelse ($forums as $forum)
-            <div class="my-4">
-                @include('dashboard.admin.forums.forum-card')
-            </div>
+        @include('dashboard.admin.forums.forum-card')
+        <hr>
+        @forelse($forum->comments as $comment)
+            @include('dashboard.admin.forums.comment-box')
         @empty
-            There are no discussion
+            <p class="text-center my-4">No Comments Found.</p>
         @endforelse
     </div>
 
-    <div class="d-flex justify-content-end pr-5">
-        {{ $forums->links() }}
-    </div>
     <!-- =========== Scripts =========  -->
     <script src="{{ asset('import/assets/js/main.js') }}"></script>
 

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Forum;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -26,9 +27,18 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(Request $request, Forum $forum)
     {
-        //
+        $validatedData = $request->validate([
+            'pesan' => 'required',
+        ]);
+
+        $validatedData['forum_id'] = $forum->id;
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Comment::create($validatedData);
+
+        return redirect()->back()->with('success', 'New Comment created successfully!');
     }
 
     /**

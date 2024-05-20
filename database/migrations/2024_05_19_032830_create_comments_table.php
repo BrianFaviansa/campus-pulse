@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id');
             $table->unsignedBigInteger('forum_id');
+            $table->text('pesan');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('forum_id')->references('id')->on('forums')->onDelete('cascade');
             $table->timestamps();

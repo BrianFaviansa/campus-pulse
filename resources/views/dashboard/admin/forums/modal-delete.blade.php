@@ -1,36 +1,29 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#createDiscussion">
-    Add new discussion
+<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#deleteForum{{ $forum->id }}">
+    Delete
 </button>
 
 <!-- Modal -->
-<div class="modal fade" id="createDiscussion" tabindex="-1" aria-labelledby="createDiscussionLabel" aria-hidden="true">
+<div class="modal fade" id="deleteForum{{ $forum->id }}" tabindex="-1" aria-labelledby="deleteForumLabel" aria-hidden="true">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content text-dark">
             <div class="modal-header">
-                <h5 class="modal-title" id="createDiscussionLabel">Create New Discussion</h5>
+                <h5 class="modal-title" id="deleteForumLabel">Delete Forum</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                     <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('admin.forums.store') }}" method="POST">
+                <form action="{{ route('admin.forums.delete', $forum) }}" method="POST">
                     @csrf
-                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
-                    <div class="form-group">
-                        <label for="judul">Discussion Topic</label>
-                        <input type="text" name="judul" class="form-control" id="judul" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="pesan">Ask here</label>
-                        <textarea class="form-control" name="pesan" id="pesan" rows="3" required></textarea>
-                    </div>
+                    @method('delete')
+                    Are you sure want to delete this forum?
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Post Disussion</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                <button type="submit" class="btn btn-danger">Yes</button>
+                </form>
             </div>
-            </form>
         </div>
     </div>
 </div>

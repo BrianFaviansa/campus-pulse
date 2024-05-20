@@ -7,6 +7,7 @@ use App\Http\Controllers\ForumController;
 use App\Http\Controllers\LandingController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CommentController;
 use App\Http\Controllers\PartnershipController;
 use App\Http\Controllers\DashboardUserController;
 use App\Http\Controllers\DashboardAdminController;
@@ -62,6 +63,9 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('/forums', [DashboardAdminController::class, 'forums'])->name('dashboard.admin.forums');
             Route::post('/forums/store', [ForumController::class, 'store'])->name('admin.forums.store');
             Route::put('/forums/update/{forum}', [ForumController::class, 'update'])->name('admin.forums.update');
+            Route::delete('/forums/delete/{forum}', [ForumController::class, 'destroy'])->name('admin.forums.delete');
+            Route::get('/forums/{forum}', [ForumController::class, 'show'])->name('forum.show');
+            Route::post('/forums/{forum}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
 
             Route::get('/profile/{user:nama}', [DashboardAdminController::class, 'profile'])->name('dashboard.admin.profile');
             Route::put('/profile/{user:nama}/update', [ProfileController::class, 'update'])->name('dashboard.admin.profile.update');

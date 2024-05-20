@@ -72,7 +72,7 @@ class DashboardAdminController extends Controller
     {
         $title = "Forums";
         $user = auth()->user();
-        $forums = Forum::with('user')->orderBy('created_at', 'desc')->get();
+        $forums = Forum::with('user')->orderBy('created_at', 'desc')->paginate(4);
 
         return view('dashboard.admin.forums.index', compact('title', 'user', 'forums'));
     }

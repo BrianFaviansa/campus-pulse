@@ -44,7 +44,10 @@ class ForumController extends Controller
      */
     public function show(Forum $forum)
     {
-        //
+        $user = auth()->user();
+        $title = $forum->judul;
+
+        return view('dashboard.admin.forums.show', compact('user', 'forum', 'title'));
     }
 
     /**
@@ -60,7 +63,15 @@ class ForumController extends Controller
      */
     public function update(Request $request, Forum $forum)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => 'required',
+            'pesan' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        $forum->update($validatedData);
+
+        return redirect()->back()->with('success', 'Discussion updated successfully!');
     }
 
     /**
@@ -68,6 +79,8 @@ class ForumController extends Controller
      */
     public function destroy(Forum $forum)
     {
-        //
+        $forum->delete();
+
+        return redirect()->back()->with('success', 'Discussion deleted successfully!');
     }
 }
