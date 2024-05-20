@@ -12,11 +12,20 @@
             </li>
 
             <li>
-                <a href="{{ route('dashboard.user') }}">
+                <a href="{{ route('dashboard.user') }}" id="dashboardLink">
+                    <span class="icon">
+                        <ion-icon name="bar-chart-outline"></ion-icon>
+                    </span>
+                    <span class="title">Dashboard</span>
+                </a>
+            </li>
+
+            <li>
+                <a href="/">
                     <span class="icon">
                         <ion-icon name="home-outline"></ion-icon>
                     </span>
-                    <span class="title">Dashboard</span>
+                    <span class="title">Landing</span>
                 </a>
             </li>
 
