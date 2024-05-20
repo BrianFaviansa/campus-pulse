@@ -16,6 +16,7 @@
             <div class="modal-body">
                 <form action="{{ route('admin.forums.store') }}" method="POST">
                     @csrf
+                    <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group">
                         <label for="judul">Discussion Topic</label>
                         <input type="text" name="judul" class="form-control" id="judul" required>

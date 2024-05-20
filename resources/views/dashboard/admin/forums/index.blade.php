@@ -7,7 +7,11 @@
     @include('dashboard.admin.forums.modal-create')
 
     <div class="px-5 mt-4">
-        @include('dashboard.admin.forums.forum-card')
+        @forelse ($forums as $forum)
+            @include('dashboard.admin.forums.forum-card')
+        @empty
+            There are no discussion
+        @endforelse
     </div>
 
     <!-- =========== Scripts =========  -->

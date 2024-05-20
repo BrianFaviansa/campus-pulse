@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\User;
 use App\Models\Event;
 use App\Models\Category;
+use App\Models\Forum;
 use App\Models\Partnership;
 use Illuminate\Http\Request;
 
@@ -71,7 +72,8 @@ class DashboardAdminController extends Controller
     {
         $title = "Forums";
         $user = auth()->user();
+        $forums = Forum::with('user')->orderBy('created_at', 'desc')->get();
 
-        return view('dashboard.admin.forums.index', compact('title', 'user'));
+        return view('dashboard.admin.forums.index', compact('title', 'user', 'forums'));
     }
 }

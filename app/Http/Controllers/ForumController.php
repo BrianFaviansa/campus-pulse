@@ -28,7 +28,15 @@ class ForumController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'judul' => 'required',
+            'pesan' => 'required',
+            'user_id' => 'required'
+        ]);
+
+        Forum::create($validatedData);
+
+        return redirect()->back()->with('success', 'New Discussion created successfully!');
     }
 
     /**

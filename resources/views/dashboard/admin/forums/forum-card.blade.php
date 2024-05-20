@@ -4,11 +4,11 @@
             <div class="d-flex align-items-center">
                 <div>
                     <h5 class="card-title mb-0"><a href="">
-                            Jon
+                            {{ $forum->user->nama }}
                         </a></h5>
                         <div>
                             <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                                2 minutes ago </span>
+                                {{ $forum->created_at->diffForHumans() }} </span>
                         </div>
                 </div>
             </div>
@@ -33,16 +33,13 @@
                 </div>
             </form>
         @else
-            <p class="fm-6 fw-medium text-dark">
-                Judulnya
+            <h4 class="fm-6 fw-medium text-dark">
+                {{ $forum->judul }}</h4>
             <p class="fm-6 fw-medium text-muted">
-                isinya
+                {{ $forum->pesan }}
             </p>
         @endif
-        <div class="d-flex justify-content-between">
-            {{-- @include('ideas.shared.like-button') --}}
-
-        </div>
+            
         {{-- @include('ideas.shared.comments-box') --}}
     </div>
 </div>
