@@ -27,8 +27,8 @@ class EventController extends Controller
         $validatedData['poster'] = $imageName;
 
         Event::create($validatedData);
-
-        return redirect()->route('dashboard.admin.events')->with('success', 'Event created successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.events')->with('success', 'Event created successfully!');
+        return redirect()->route('dashboard.user.events')->with('success', 'Event created successfully!');
     }
 
     /**
@@ -67,7 +67,8 @@ class EventController extends Controller
 
         $event->update($validatedData);
 
-        return redirect()->route('dashboard.admin.events')->with('success', 'Event updated successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.events')->with('success', 'Event updated successfully!');
+        return redirect()->route('dashboard.user.events')->with('success', 'Event updated successfully!');
     }
 
     /**
@@ -78,6 +79,7 @@ class EventController extends Controller
         Storage::disk('public')->delete('event_posters/' . $event->poster);
         $event->delete();
 
-        return redirect()->route('dashboard.admin.events')->with('success', 'Event deleted successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.events')->with('success', 'Event deleted successfully!');
+        return redirect()->route('dashboard.user.events')->with('success', 'Event deleted successfully!');
     }
 }

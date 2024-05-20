@@ -1,11 +1,11 @@
-@extends('dashboard.admin.layouts.layout')
+@extends('dashboard.user.layouts.layout')
 
 @section('content')
     <h1 class="">Partnerships</h1>
-    @include('dashboard.admin.partnerships.modal-create')
+    @include('dashboard.user.partnerships.modal-create')
 
     @if (session('success'))
-        @include('dashboard.admin.layouts.success-alert')
+        @include('dashboard.user.layouts.success-alert')
     @endif
 
     <div class="recentCustomers mt-1">
@@ -16,8 +16,6 @@
                     <th>Name</th>
                     <th>Partnership Link</th>
                     <th>Partnered At</th>
-                    <th>Action</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -27,10 +25,6 @@
                         <td>{{ $partnership->nama }}</td>
                         <td><a target="_blank" href="{{ $partnership->link }}">{{ $partnership->link }}</a></td>
                         <td>{{ $partnership->created_at->format('d F Y') }}</td>
-                        <td>
-                            @include('dashboard.admin.partnerships.modal-edit')
-                            @include('dashboard.admin.partnerships.modal-delete')
-                        </td>
                     </tr>
                 @empty
                     <tr>

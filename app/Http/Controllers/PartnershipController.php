@@ -19,7 +19,8 @@ class PartnershipController extends Controller
 
         Partnership::create($validatedData);
 
-        return redirect()->route('dashboard.admin.partnerships')->with('success', 'Partnership created successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.partnerships')->with('success', 'Partnership created successfully!');
+        return redirect()->route('dashboard.user.partnerships')->with('success', 'Partnership created successfully!');
     }
 
     /**
@@ -34,7 +35,8 @@ class PartnershipController extends Controller
 
         $partnership->update($validatedData);
 
-        return redirect()->route('dashboard.admin.partnerships')->with('success', 'Partnership updated successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.partnerships')->with('success', 'Partnership updated successfully!');
+        return redirect()->route('dashboard.user.partnerships')->with('success', 'Partnership updated successfully!');
     }
 
     /**
@@ -44,6 +46,7 @@ class PartnershipController extends Controller
     {
         $partnership->delete();
 
-        return redirect()->route('dashboard.admin.partnerships')->with('success', 'Partnership deleted successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.partnerships')->with('success', 'Partnership deleted successfully!');
+        return redirect()->route('dashboard.user.partnerships')->with('success', 'Partnership deleted successfully!');
     }
 }

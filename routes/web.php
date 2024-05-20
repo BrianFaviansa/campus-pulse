@@ -74,9 +74,26 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::prefix('/dashboard/user')->group(function () {
         Route::get('/', [DashboardUserController::class, 'index'])->name('dashboard.user');
+        Route::get('/events', [DashboardUserController::class, 'events'])->name('dashboard.user.events');
+        Route::post('/events/store', [EventController::class, 'store'])->name('user.events.store');
+        Route::put('/events/update/{event}', [EventController::class, 'update'])->name('user.events.update');
+        Route::delete('/events/delete/{event}', [EventController::class, 'destroy'])->name('user.events.delete');
+
+        Route::get('/partnerships', [DashboardUserController::class, 'partnerships'])->name('dashboard.user.partnerships');
+        Route::post('/partnerships/store', [PartnershipController::class, 'store'])->name('user.partnerships.store');
+
+
+        Route::get('/profile', [DashboardUserController::class, 'profile'])->name('dashboard.user.profile');
+        Route::put('/profile/update', [ProfileController::class, 'update'])->name('dashboard.user.profile.update');
+
+        Route::get('/forums', [DashboardUserController::class, 'forums'])->name('dashboard.user.forums');
+        Route::post('/forums/store', [ForumController::class, 'store'])->name('user.forums.store');
+        Route::put('/forums/update/{forum}', [ForumController::class, 'update'])->name('user.forums.update');
+        Route::delete('/forums/delete/{forum}', [ForumController::class, 'destroy'])->name('user.forums.delete');
+        Route::get('/forums/{forum}', [ForumController::class, 'show'])->name('user.forum.show');
+        Route::post('/forums/{forum}/comment', [CommentController::class, 'store'])->name('user.forum.comment.store');
+
     });
-
-
 
     Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 });

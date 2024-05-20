@@ -8,7 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class ProfileController extends Controller
 {
-    public function update(Request $request, User $user) {
+    public function update(Request $request, User $user)
+    {
         $validatedData = $request->validate([
             'nama' => 'required|min:3|max:255',
             'email' => 'required|email|max:255',
@@ -18,7 +19,7 @@ class ProfileController extends Controller
             'oldPassword' => 'nullable',
             'newPassword' => 'nullable|min:5',
         ]);
-        
+
         if ($validatedData['oldPassword'] && $validatedData['newPassword']) {
             if (!Hash::check($request->oldPassword, $user->password)) {
                 return back()->with('error', 'Old password wrong.');
@@ -28,6 +29,7 @@ class ProfileController extends Controller
 
         $user->update($validatedData);
 
-        return redirect()->route('dashboard.admin.profile', $user)->with('success', 'Profile updated successfully');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.profile', $user)->with('success', 'Profile updated successfully');
+        return redirect()->route('dashboard.user.profile', $user)->with('success', 'Profile updated successfully');
     }
 }

@@ -48,7 +48,8 @@ class ForumController extends Controller
         $title = "Discussion";
         $comments = $forum->comments;
 
-        return view('dashboard.admin.forums.show', compact('user', 'forum', 'title', 'comments'));
+        if (auth()->user()->role == 'admin') return view('dashboard.admin.forums.show', compact('user', 'forum', 'title', 'comments'));
+        return view('dashboard.user.forums.show', compact('user', 'forum', 'title', 'comments'));
     }
 
     /**
