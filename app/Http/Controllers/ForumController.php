@@ -45,9 +45,10 @@ class ForumController extends Controller
     public function show(Forum $forum)
     {
         $user = auth()->user();
-        $title = $forum->judul;
+        $title = "Discussion";
+        $comments = $forum->comments;
 
-        return view('dashboard.admin.forums.show', compact('user', 'forum', 'title'));
+        return view('dashboard.admin.forums.show', compact('user', 'forum', 'title', 'comments'));
     }
 
     /**

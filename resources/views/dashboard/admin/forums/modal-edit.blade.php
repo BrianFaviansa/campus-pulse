@@ -16,6 +16,7 @@
             <div class="modal-body">
                 <form action="{{ route('admin.forums.update', $forum) }}" method="POST">
                     @csrf
+                    @method('PUT')
                     <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
                     <div class="form-group">
                         <label for="judul">Discussion Topic</label>

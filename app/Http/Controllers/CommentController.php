@@ -38,7 +38,7 @@ class CommentController extends Controller
 
         Comment::create($validatedData);
 
-        return redirect()->back()->with('success', 'New Comment created successfully!');
+        return redirect()->back()->with('success', 'Comment created successfully!');
     }
 
     /**

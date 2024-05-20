@@ -4,6 +4,10 @@
     <!-- ======================= Cards ================== -->
     <h1 class="">Forums</h1>
 
+    @if (session('success'))
+        @include('dashboard.admin.layouts.success-alert')
+    @endif
+    
     @include('dashboard.admin.forums.modal-create')
 
     <div class="px-5 mt-4">

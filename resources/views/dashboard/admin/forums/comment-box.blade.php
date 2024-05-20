@@ -9,10 +9,10 @@
         </div>
     </form>
     <hr>
-    @forelse ($forum->comments as $comment)
+    @forelse ($comments as $comment)
         <div class="d-flex align-items-start">
             <div class="w-100">
-                <div class="d-flex justify-content-between">
+                <div class="d-flex text-primary justify-content-between">
                     <h6 class=""> {{ $comment->user->nama }}
                     </h6>
                     <small class="fs-6 fw-light text-muted">{{ $comment->created_at->diffForHumans() }}</small>
@@ -22,6 +22,7 @@
                 </p>
             </div>
         </div>
+        <hr>
     @empty
         <p class="text-center my-4">No Comments Found.</p>
     @endforelse
