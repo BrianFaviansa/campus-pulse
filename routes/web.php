@@ -61,6 +61,7 @@ Route::group(['middleware' => 'auth'], function () {
 
             Route::get('/forums', [DashboardAdminController::class, 'forums'])->name('dashboard.admin.forums');
             Route::post('/forums/store', [ForumController::class, 'store'])->name('admin.forums.store');
+            Route::put('/forums/update/{forum}', [ForumController::class, 'update'])->name('admin.forums.update');
 
             Route::get('/profile/{user:nama}', [DashboardAdminController::class, 'profile'])->name('dashboard.admin.profile');
             Route::put('/profile/{user:nama}/update', [ProfileController::class, 'update'])->name('dashboard.admin.profile.update');

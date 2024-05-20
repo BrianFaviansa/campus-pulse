@@ -6,22 +6,21 @@
                     <h5 class="card-title mb-0"><a href="">
                             {{ $forum->user->nama }}
                         </a></h5>
-                        <div>
-                            <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
-                                {{ $forum->created_at->diffForHumans() }} </span>
-                        </div>
+                    <div>
+                        <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
+                            {{ $forum->created_at->diffForHumans() }} </span>
+                    </div>
                 </div>
             </div>
             <div class="d-flex">
-                <a href="">View</a>
-                <a href="">edit</a>
-                <a href="">Delete</a>
+                @if (Auth::check() && $forum->user->id == Auth::id())
+                    @include('dashboard.admin.forums.modal-edit')
+                @endif
             </div>
         </div>
     </div>
-    <div class="card-body">
-        @if ($editing ?? false)
-            <form action="" method="post">
+    <div class="card-body"
+        @if ($editing ?? false) <form action="" method="post">
                 @csrf
                 @method('put')
                 <div class="mb-3">
@@ -37,9 +36,6 @@
                 {{ $forum->judul }}</h4>
             <p class="fm-6 fw-medium text-muted">
                 {{ $forum->pesan }}
-            </p>
-        @endif
-            
-        {{-- @include('ideas.shared.comments-box') --}}
+            </p> @endif
+        @include('dashboard.admin.forums.comment-box') </div>
     </div>
-</div>
