@@ -14,7 +14,7 @@
                 <h1 class="mt-5">Hi, CampusPulse User</h1>
                 <p>Please click the button below to reset your password</p>
                 <br>
-                <a href="{{ route('forgot-password.validation', $token) }}" class="btn btn-primary">Reset Password</a>
+                <a href="{{ route('validasi-forgot-password', $token) }}" class="btn btn-primary">Reset Password</a>
             </div>
         </div>
     </div>

@@ -8,12 +8,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
 
     <!-- Bootstrap only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+        integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <!-- CSS link -->
     <link rel="stylesheet" href="css/CampusPulse.css">
@@ -26,7 +24,7 @@
             <div class="col-md-1 infinity-left-space"></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 text-center infinity-form">
                 <div class="text-center mb-4">
-                    <h4>Reset Your Password</h4>
+                    <h4>Reset Password</h4>
                 </div>
 
                 @if ($errors->any())
@@ -37,38 +35,30 @@
                     </div>
                 @endif
 
+                <!--LOGIN FORM-->
                 <form action="{{ route('validasi-forgot-password-act') }}" method="POST">
                     @csrf
                     <input type="hidden" name="token" value="{{ $token }}">
                     <div class="form-input">
+                        <span><i class="fa fa-envelope"></i></span>
+                        <label for="email">Email</label>
+                        <input type="email" value="{{ old('email') }}" name="email" placeholder="Email"
+                        class="form-control">
+                    </div>
+                    <div class="form-input">
                         <span><i class="fa fa-lock"></i></span>
-                        <label class="fs-5" for="password">New Password</label>
-                        <input type="password" name="password" placeholder="Enter your new password"
-                            class="form-control @error('password') is-invalid @enderror">
-                        @error('password')
-                            <div class="invalid-feedback">
-                                {{ $message }}
-                            </div>
-                        @enderror
+                        <label for="password">New Password</label>
+                        <input type="password" name="password" placeholder="Password" class="form-control">
                     </div>
                     <div class="mb-3">
-                        <button name="submit" type="submit" class="btn btn-block">Submit</button>
+                        <button name="submit" type="submit" class="btn btn-block btn-primary mt-2">Submit</button>
                     </div>
                 </form>
             </div>
             <div class="col-md-1 infinity-right-space"></div>
         </div>
     </div>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
-
-@if (session('success'))
-    <script>
-        Swal.fire({
-            icon: 'success',
-            title: 'Success',
-            text: '{{ session('success') }}',
-        });
-    </script>
-@endif
