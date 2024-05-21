@@ -30,7 +30,7 @@
     <div class="alert alert-success" role="alert" id="notification"
         class="alert alert-success alert-dismissible fade show"
         style="display: none; position: absolute; top: 80px; right: 20px; z-index: 9999; min-height: 150px">
-        <h4 class="alert-heading font-weight-bold" style="font-size: 30px;">Don't miss out!</h4>
+        <h4 class="alert-heading font-weight-bold" style="font-size: 25px;">Don't miss out!</h4>
         <p style="font-size: 15px;">Let's Sign up and get your notifications</p>
     </div>
     <!-- swiper cdn link -->
