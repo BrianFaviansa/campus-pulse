@@ -4,7 +4,7 @@
             <div class="d-flex align-items-center">
                 <div>
                     <h2 class="card-title mb-0"><a href="">
-                            {{ $forum->judul }}
+                            <a href="{{ route('user.forum.show', $forum) }}">{{ $forum->judul }}</a>
                         </a></h2>
                     <div>
                         <span class="fs-6 fw-light text-muted"> <span class="fas fa-clock"> </span>
@@ -13,11 +13,11 @@
                 </div>
             </div>
             <div class="d-grid">
-                <a href="{{ route('forum.show', $forum) }}"
-                    class="{{ Route::is('forum.show') ? 'd-none' : '' }} btn btn-success">Detail</a>
+                <a href="{{ route('user.forum.show', $forum) }}"
+                    class="{{ Route::is('user.forum.show') ? 'd-none' : '' }} btn btn-success">Detail</a>
                 @if (Auth::check() && $forum->user->id == Auth::id())
-                    @include('dashboard.admin.forums.modal-edit')
-                    @include('dashboard.admin.forums.modal-delete')
+                    @include('dashboard.user.forums.modal-edit')
+                    @include('dashboard.user.forums.modal-delete')
                 @endif
             </div>
         </div>

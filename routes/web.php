@@ -71,7 +71,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::post('/forums/store', [ForumController::class, 'store'])->name('admin.forums.store');
             Route::put('/forums/update/{forum}', [ForumController::class, 'update'])->name('admin.forums.update');
             Route::delete('/forums/delete/{forum}', [ForumController::class, 'destroy'])->name('admin.forums.delete');
-            Route::get('/forums/{forum}', [ForumController::class, 'show'])->name('forum.show');
+            Route::get('/forums/{forum}', [ForumController::class, 'show'])->name('admin.forum.show');
             Route::post('/forums/{forum}/comment', [CommentController::class, 'store'])->name('forum.comment.store');
 
             Route::get('/profile/{user:nama}', [DashboardAdminController::class, 'profile'])->name('dashboard.admin.profile');

@@ -3,7 +3,7 @@
 @section('content')
     <!-- ======================= Cards ================== -->
     <div class="cardBox">
-        <div class="card">
+        {{-- <div class="card">
                 <div>
                     <div class="numbers">{{ $users }}</div>
                     <div class="cardName">Members CampusPulse</div>
@@ -12,7 +12,7 @@
             <div class="iconBx">
                 <ion-icon name="people-sharp"></ion-icon>
             </div>
-        </div>
+        </div> --}}
 
         <div class="card">
                 <div>

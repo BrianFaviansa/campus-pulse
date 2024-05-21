@@ -3,7 +3,7 @@
         <div class="d-flex align-items-center justify-content-between">
             <div class="d-flex align-items-center">
                 <div>
-                    <h2 class="card-title mb-0"><a href="">
+                    <h2 class="card-title mb-0"><a href="{{ route('admin.forum.show', $forum) }}">
                             {{ $forum->judul }}
                         </a></h2>
                     <div>

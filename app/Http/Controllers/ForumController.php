@@ -36,8 +36,8 @@ class ForumController extends Controller
 
         Forum::create($validatedData);
 
-        if (auth()->user()->role == 'admin') return redirect()->route('admin.forums.index')->with('success', 'New Discussion created successfully!');
-        return redirect()->route('user.forums.store')->with('success', 'New Discussion created successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.forums')->with('success', 'New Discussion created successfully!');
+        return redirect()->route('dashboard.user.forums')->with('success', 'New Discussion created successfully!');
     }
 
     /**
@@ -75,8 +75,8 @@ class ForumController extends Controller
         $forum->update($validatedData);
 
 
-        if (auth()->user()->role == 'admin') return redirect()->route('admin.forums.update')->with('success', 'Discussion updated successfully!');
-        return redirect()->route('user.forums.update')->with('success', 'Discussion updated successfully!');
+        if (auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.forums')->with('success', 'Discussion updated successfully!');
+        return redirect()->route('dashboard.user.forums')->with('success', 'Discussion updated successfully!');
     }
 
     /**

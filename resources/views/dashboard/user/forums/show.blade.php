@@ -21,11 +21,11 @@
                         </div>
                     </div>
                     <div class="d-grid">
-                        <a href="{{ route('forum.show', $forum) }}"
-                            class="{{ Route::is('forum.show') ? 'd-none' : '' }} btn btn-success">Detail</a>
+                        <a href="{{ route('user.forum.show', $forum) }}"
+                            class="{{ Route::is('user.forum.show') ? 'd-none' : '' }} btn btn-success">Detail</a>
                         @if (Auth::check() && $forum->user->id == Auth::id())
-                            @include('dashboard.admin.forums.modal-edit')
-                            @include('dashboard.admin.forums.modal-delete')
+                            @include('dashboard.user.forums.modal-edit')
+                            @include('dashboard.user.forums.modal-delete')
                         @endif
                     </div>
                 </div>
@@ -42,7 +42,7 @@
 
         <hr>
 
-        @include('dashboard.admin.forums.comment-box')
+        @include('dashboard.user.forums.comment-box')
 
     </div>
 

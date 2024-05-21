@@ -1,5 +1,5 @@
 <div>
-    <form action="{{ route('forum.comment.store', $forum) }}" method="POST">
+    <form action="{{ route('user.forum.comment.store', $forum) }}" method="POST">
         @csrf
         <div class="mb-3">
             <textarea name="pesan" class="fs-6 form-control" rows="3"></textarea>
