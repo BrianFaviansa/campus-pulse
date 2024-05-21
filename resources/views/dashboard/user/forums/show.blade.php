@@ -1,4 +1,4 @@
-@extends('dashboard.admin.layouts.layout')
+@extends('dashboard.user.layouts.layout')
 
 @section('content')
     <!-- ======================= Cards ================== -->

@@ -16,8 +16,7 @@
                     <th>Name</th>
                     <th>Poster</th>
                     <th>Organizer</th>
-                    {{-- <th>Benefit</th>
-                    <th>Description</th> --}}
+                    
                     <th>Status</th>
                     <th>Event Date</th>
                     <th>Action</th>
@@ -32,8 +31,6 @@
                         <td class="text-center"><a target="_blank" href="{{ asset('storage/event_posters/'. $event->poster) }}"><img src="{{ asset('storage/event_posters/' . $event->poster) }}"
                             alt="{{ $event->nama }}" class="img img-fluid" style="max-width: 150px;"></a></td>
                         <td>{{ $event->user->nama }}</td>
-                        {{-- <td>{{ $event->benefit }}</td>
-                        <td>{{ $event->deskripsi }}</td> --}}
                         <td>{{ $event->status}}</td>
                         <td>{{ $event->tanggal->format('d F Y') }}</td>
                         <td>
