@@ -24,7 +24,8 @@ class User extends Authenticatable
         'jenis_kelamin',
         'jurusan',
         'universitas',
-        'role'
+        'role',
+        'password',
     ];
 
     /**

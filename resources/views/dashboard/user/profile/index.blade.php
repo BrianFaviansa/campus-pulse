@@ -14,6 +14,7 @@
     <form action="{{ route('dashboard.user.profile.update', $user) }}" method="POST">
         @csrf
         @method('PUT')
+        <input type="hidden" name="user_id" value="{{ auth()->user()->id }}">
         <div class="form-group">
             <label for="nama">Name</label>
             <input type="text" name="nama" value="{{ $user->nama }}"

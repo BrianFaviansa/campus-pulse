@@ -18,7 +18,10 @@ class ProfileController extends Controller
             'universitas' => 'required|min:3',
             'oldPassword' => 'nullable',
             'newPassword' => 'nullable|min:5',
+            'user_id' => 'required',
         ]);
+
+        $user = User::find($validatedData['user_id']);
 
         if ($validatedData['oldPassword'] && $validatedData['newPassword']) {
             if (!Hash::check($request->oldPassword, $user->password)) {
