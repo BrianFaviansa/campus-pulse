@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Login Form</title>
+    <title>Forgot Password</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
     <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
     <!-- CSS link -->
     <link rel="stylesheet" href="css/CampusPulse.css">
@@ -25,7 +26,7 @@
             <div class="col-md-1 infinity-left-space"></div>
             <div class="col-lg-10 col-md-10 col-sm-12 col-xs-12 text-center infinity-form">
                 <div class="text-center mb-4">
-                    <h4>Login Form</h4>
+                    <h4>Forgot Password</h4>
                 </div>
 
                 @if ($errors->any())
@@ -36,39 +37,21 @@
                     </div>
                 @endif
 
-                <!--LOGIN FORM-->
-                <form action="" method="POST">
+                <form action="{{ route('forgot-password-act') }}" method="POST">
                     @csrf
                     <div class="form-input">
                         <span><i class="fa fa-envelope"></i></span>
-                        <input type="email" value="{{ old('email') }}" name="email" placeholder="Email"
-                            class="form-control">
-                    </div>
-                    <div class="form-input">
-                        <span><i class="fa fa-lock"></i></span>
-                        <input type="password" name="password" placeholder="Password" class="form-control">
+                        <label class="fs-5" for="email">Please enter your registered email</label>
+                        <input type="email" name="email" placeholder="Email"
+                            class="form-control @error('newPassword') is-invalid @enderror">
+                        @error('newPassword')
+                            <div class="invalid-feedback">
+                                {{ $message }}
+                            </div>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <button name="submit" type="submit" class="btn btn-block">Login</button>
-                    </div>
-                    <div class="text-right">
-                        <a href="{{ route('forgot-password') }}" class="forget-link">Forgot password?</a>
-                    </div>
-                    <div class="text-center mb-2">
-                        <div class="text-center mt-3" style="color: #000;">or login with</div>
-
-                        <!-- Facebook Button -->
-                        <a href="#" class="btn btn-social btn-facebook"><i class="fab fa-facebook-f"></i></a>
-
-                        <!-- Google Button -->
-                        <a href="#" class="btn btn-social btn-google"><i class="fab fa-google"></i></a>
-
-                        <!-- Twitter Button -->
-                        <a href="#" class="btn btn-social btn-twitter"><i class="fab fa-twitter"></i></a>
-                    </div>
-
-                    <div class="text-center mb-5" style="color: #000;">Don't have an account?
-                        <a class="register-link" href="{{ route('register') }}">Register here</a>
+                        <button name="submit" type="submit" class="btn btn-block">Submit</button>
                     </div>
                 </form>
             </div>
@@ -78,3 +61,13 @@
 </body>
 
 </html>
+
+@if (session('success'))
+    <script>
+        Swal.fire({
+            icon: 'success',
+            title: 'Success',
+            text: '{{ session('success') }}',
+        });
+    </script>
+@endif

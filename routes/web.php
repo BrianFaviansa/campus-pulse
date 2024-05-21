@@ -30,6 +30,13 @@ Route::get('/competitions', [LandingController::class, 'competitions']);
 Route::get('/scholarships', [LandingController::class, 'scholarships']);
 Route::get('/internships', [LandingController::class, 'internships']);
 
+
+Route::get('/forgot-password', [AuthController::class, 'forgot_password'])->name('forgot-password');
+Route::post('/forgot-password-act', [AuthController::class, 'forgot_password_act'])->name('forgot-password-act');
+
+Route::get('/validasi-forgot-password/{token}', [AuthController::class, 'validasi_forgot_password'])->name('validasi-forgot-password');
+Route::post('/validasi-forgot-password-act', [AuthController::class, 'validasi_forgot_password_act'])->name('validasi-forgot-password-act');
+
 Route::group(['middleware' => 'guest'], function () {
     Route::get('/login', [AuthController::class, 'index'])->name('login');
     Route::post('/login', [AuthController::class, 'login']);
