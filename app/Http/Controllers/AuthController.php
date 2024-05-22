@@ -66,12 +66,12 @@ class AuthController extends Controller
     {
         $request->validate(
             [
-                'name' => 'required|max:255',
+                'nama' => 'required|max:255',
                 'email' => 'required|email:dns|max:255|unique:users',
                 'password' => 'required|min:5|confirmed',
             ],
             [
-                'name.required' => 'Name wajib diisi',
+                'nama.required' => 'Nama wajib diisi',
                 'email.required' => 'Email wajib diisi',
                 'email.unique' => 'Email sudah terdaftar',
                 'password.required' => 'Password wajib diisi',
@@ -81,14 +81,14 @@ class AuthController extends Controller
         );
 
         $user = User::create([
-            'name' => $request->name,
+            'nama' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
         Auth::login($user);
 
-        return redirect()->back()->with('success', 'Registrasi berhasil dilakukan! Silahkan login.');
+        return redirect()->route('dashboard.user')->with('success', 'Registrasi berhasil dilakukan! Silahkan login.');
     }
 
     public function forgot_password()

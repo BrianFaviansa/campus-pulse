@@ -42,6 +42,7 @@ Route::group(['middleware' => 'guest'], function () {
     Route::post('/login', [AuthController::class, 'login']);
 
     Route::get('/register', [AuthController::class, 'showRegistrationForm'])->name('register');
+    Route::post('/register', [AuthController::class, 'register'])->name('register.act');
 });
 
 Route::group(['middleware' => 'auth'], function () {

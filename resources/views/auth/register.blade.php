@@ -42,11 +42,11 @@
                 </div>
 
                 <!--REGISTER FORM-->
-                <form action="{{ route('register') }}" method="POST" class="px-3">
+                <form action="{{ route('register.act') }}" method="POST" class="px-3">
                     @csrf
                     <div class="form-input">
                         <span><i class="fa fa-user"></i></span>
-                        <input type="text" value="{{ old('name') }}" name="name" placeholder="Full Name" class="form-control" required>
+                        <input type="text" value="{{ old('nama') }}" name="nama" placeholder="Full Name" class="form-control" required>
                     </div>
                     <div class="form-input">
                         <span><i class="fa fa-envelope"></i></span>
