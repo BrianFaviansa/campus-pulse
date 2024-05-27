@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Event;
 use Illuminate\Http\Request;
 
 class LandingController extends Controller
@@ -40,5 +41,12 @@ class LandingController extends Controller
     {
         $title = 'Internships';
         return view('landing.internships', compact('title'));
+    }
+
+    public function events()
+    {
+        $title = 'Events';
+        $events = Event::orderBy('created_at', 'desc')->get();
+        return view('landing.events', compact('title', 'events'));
     }
 }

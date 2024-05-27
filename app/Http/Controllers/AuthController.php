@@ -80,15 +80,14 @@ class AuthController extends Controller
             ]
         );
 
-        $user = User::create([
+        User::create([
             'nama' => $request->nama,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
 
-        Auth::login($user);
 
-        return redirect()->route('dashboard.user')->with('success', 'Registrasi berhasil dilakukan! Silahkan login.');
+        return redirect()->route('login')->with('success', 'Registrasi berhasil dilakukan! Silahkan login.');
     }
 
     public function forgot_password()

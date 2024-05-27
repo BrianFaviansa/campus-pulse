@@ -30,6 +30,7 @@ Route::get('/competitions', [LandingController::class, 'competitions']);
 Route::get('/scholarships', [LandingController::class, 'scholarships']);
 Route::get('/internships', [LandingController::class, 'internships']);
 
+Route::get('/events', [LandingController::class, 'events'])->name('events');
 
 Route::get('/forgot-password', [AuthController::class, 'forgot_password'])->name('forgot-password');
 Route::post('/forgot-password-act', [AuthController::class, 'forgot_password_act'])->name('forgot-password-act');

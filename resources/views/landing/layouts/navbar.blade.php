@@ -13,6 +13,7 @@
                     <a href="/competitions">Competitions</a>
                     <a href="/scholarships">Scholarships</a>
                     <a href="/internships">Internships</a>
+                    <a href="{{ route('events') }}">Registered Events</a>
                 </div>
             </div>
             <a href="/community">Community</a>
@@ -45,7 +46,7 @@
 
     </header>
 
-    
+
 
 
     <!-- header section ends -->

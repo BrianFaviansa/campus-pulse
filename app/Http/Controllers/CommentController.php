@@ -38,8 +38,8 @@ class CommentController extends Controller
 
         Comment::create($validatedData);
 
-        if(auth()->user()->role == 'admin') return redirect()->route('dashboard.admin.forums.show', $forum->id)->with('success', 'Comment created successfully!');
-        return redirect()->back()->with('success', 'Comment created successfully!');
+        if(auth()->user()->role == 'admin') return redirect()->route('admin.forum.show', $forum->id)->with('success', 'Comment created successfully!');
+        return redirect()->route('user.forum.show')->with('success', 'Comment created successfully!');
     }
 
     /**
